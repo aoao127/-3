@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>《网络暴力如何被审判？一份来自法庭的数据全景观察》</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <!-- css include -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        /* 第一个代码的图表样式 */
+        .chart-wrapper * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        .chart-wrapper {
+            width: 100%;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 25px; /* 减小内边距 */
+            margin: 25px 0; /* 减小外边距 */
+        }
+        
+        .chart-title {
+            text-align: center;
+            color: #333;
+            font-size: 22px; /* 减小字体大小 */
+            font-weight: 600;
+            margin-bottom: 20px; /* 减小间距 */
+            letter-spacing: 0.5px;
+        }
+        
+        .chart-container-inner {
+            position: relative;
+            width: 100%;
+            height: 320px; /* 减小高度 */
+            margin: 0 auto;
+        }
+        
+        .center-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 160px; /* 减小宽度 */
+            transition: all 0.3s ease;
+        }
+        
+        .percentage {
+            font-size: 32px; /* 减小字体大小 */
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .category {
+            font-size: 16px; /* 减小字体大小 */
+            font-weight: 600;
+            line-height: 1.2;
+            color: #555;
+        }
+        
+        .description {
+            font-size: 13px; /* 减小字体大小 */
+            color: #666;
+            margin-top: 6px;
+            line-height: 1.3;
+        }
+        
+        .data-note {
+            text-align: center;
+            margin-top: 15px; /* 减小间距 */
+            color: #777;
+            font-size: 12px; /* 减小字体大小 */
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .chart-wrapper {
+                padding: 18px;
+            }
+            
+            .chart-container-inner {
+                height: 280px; /* 响应式调整 */
+            }
+            
+            .percentage {
+                font-size: 28px;
+            }
+            
+            .category {
+                font-size: 14px;
+            }
+            
+            .chart-title {
+                font-size: 18px;
+            }
+        }
+        
+        /* 第二个代码的样式 */
+        /* 主题色定义 - 使用提供的主题色 */
+        :root {
+            --primary-color: #192440; /* 深蓝色 */
+            --accent-color: #b08b57; /* 金色/米色 */
+            --highlight-color: #3a506b; /* 深蓝色的浅变体 */
+            --light-accent: #d4c5a7; /* 金色的浅变体 */
+            --light-bg: #f8f5ef; /* 非常浅的金色背景 */
+        }
+        
+        /* 文字格式优化 */
+        .service-details p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #444;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-data {
+            color: var(--accent-color);
+            font-weight: 800;
+            font-size: 1.2em;
+            padding: 0 3px;
+            background-color: rgba(176, 139, 87, 0.1);
+            border-radius: 3px;
+        }
+        
+        .highlight-important {
+            color: var(--primary-color);
+            font-weight: 700;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            margin: 20px 0;
+            font-size: 1.15rem;
+        }
+        
+        .data-point {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e9e3d9 100%);
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: 600;
+            border-left: 3px solid var(--accent-color);
+            color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .quote-box {
+            background: var(--light-bg);
+            border-left: 5px solid var(--accent-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .data-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        /* 图表容器样式 - 统一为chart-container-2避免冲突 */
+        .chart-container-2 {
+            position: relative;
+            height: 280px; /* 减小高度 */
+            width: 100%;
+            margin: 12px 0; /* 减小间距 */
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 12px; /* 减小内边距 */
+            border: 1px solid rgba(176, 139, 87, 0.2);
+        }
+        
+        .chart-info {
+            text-align: center;
+            font-size: 0.85rem; /* 减小字体大小 */
+            color: #666;
+            margin-top: 8px; /* 减小间距 */
+            font-style: italic;
+        }
+        
+        .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px; /* 减小间距 */
+            margin-top: 12px;
+            font-size: 0.85rem; /* 减小字体大小 */
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-color {
+            width: 10px; /* 减小尺寸 */
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .service-details p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            
+            .data-point {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .chart-container-2 {
+                height: 240px; /* 响应式调整 */
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .chart-container-2 {
+                height: 220px; /* 响应式调整 */
+            }
+        }
+        
+        /* 简化：移除所有额外的间距样式，使用默认 */
+        /* 主要修改：移除section之间的过大间距 */
+        .service-details.page-start + .service-details.page-start {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        
+        /* 减少第一个图表后的间距 */
+        .chart-container {
+            margin-bottom: 1rem !important;
+        }
+        
+        /* 减少第二个标题的顶部间距 */
+        .service-details .service-details-top-text .site-heading {
+            margin-top: 0.5rem !important;
+        }
+        
+        /* 确保页面左右距离一致 */
+        .service-details .container-fluid {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .service-details .container-fluid {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .service-details .container-fluid {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        
+        /* 气泡图样式 - 从第二个代码中整合 */
+        .bubble-chart-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            padding: 20px; /* 减小内边距 */
+            width: 100%;
+            margin: 30px 0; /* 减小间距 */
+        }
+        
+        .bubble-chart-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px; /* 减小间距 */
+            font-size: 24px; /* 减小字体大小 */
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        #bubble-chart {
+            width: 100%;
+            height: 400px; /* 减小高度 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .bubble-tooltip {
+            position: absolute;
+            padding: 10px 14px; /* 减小内边距 */
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+            pointer-events: none;
+            font-size: 13px; /* 减小字体大小 */
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 100;
+            border: 1px solid #eaeaea;
+            max-width: 200px; /* 减小宽度 */
+            backdrop-filter: blur(3px);
+        }
+        
+        .bubble-tooltip-title {
+            font-weight: 700;
+            margin-bottom: 5px; /* 减小间距 */
+            color: #40220F;
+            font-size: 14px; /* 减小字体大小 */
+        }
+        
+        .bubble-tooltip-value {
+            font-weight: 700;
+            color: #B0743F;
+            font-size: 16px; /* 减小字体大小 */
+        }
+        
+        .bubble-tooltip-percentage {
+            color: #666;
+            font-size: 12px; /* 减小字体大小 */
+            margin-top: 5px;
+        }
+        
+        .bubble-label {
+            font-size: 12px; /* 减小字体大小 */
+            font-weight: 600;
+            fill: white;
+            pointer-events: none;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .bubble-chart-container {
+                padding: 15px;
+            }
+            
+            .bubble-chart-title {
+                font-size: 20px; /* 响应式调整 */
+            }
+            
+            #bubble-chart {
+                height: 320px; /* 响应式调整 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="body_wrap">
+        <!-- Header Area Start -->
+        <header class="header-area">
+            <div class="container">
+                <div class="header-inn">
+                    <div class="header-action">
+                        <a href="index.html" class="header-btn"><i class="fas fa-envelope"></i>网络暴力</a>
+                    </div>
+                    <div class="header-logo">
+                        <a href="index.html"><img src="assets/img/logo8.png" alt="img"></a>
+                    </div>
+                    <div class="navigation">
+                        <a href="javascript:;" class="header-toggle" id="toggle">
+                            菜单
+                            <div><span></span><span></span><span></span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header Area End -->
+        
+        <!-- Menu Start -->
+         <div class="mainmenu">
+            <a href="javascript:;" class="closeMenu"><img src="assets/img/close.svg" alt="close" /></a>
+            <div class="sidebar-logo">
+               <a href="index.html">
+               <img src="assets/img/logo8.png" alt="logo" />
+               </a>
+            </div>
+            <nav>
+               <ul>
+                  <li><a href="index.html">1.审判的“季节”：网暴案件的时间轨迹</a></li>
+                  <li><a href="blog-details.html">2.谁在施暴？为何施暴？如何施暴？</a></li>
+                  <li><a href="service-details.html">3.在何处施暴？以何施暴？</a></li>
+                   <li><a href="contact.html">4.不止于判决：我们如何应对网暴？</a></li>
+               </ul>
+            </nav>
+         </div>
+         <!-- Menu End -->
+        
+        <!-- Breadcrumb Start -->
+        <section class="breadcrumb-area pb-0">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-8 col-sm-6">
+                        <div class="breadcrumb-heading wow fadeInLeft">
+                            <h1>在何处施暴？以何施暴？</h1>
+                            <ul class="breadcrumb-action">
+                                <li><a href="index.html"><i class="fas fa-home-alt"></i>首页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="breadcrumb-img wow fadeInRight">
+                            <img src="assets/img/ban-4.png" alt="img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Breadcrumb End -->
+        
+        <!-- Service Details Start - 整合为一个section -->
+        <section class="service-details page-start">
+            <div class="container-fluid px-sm-5 px-3">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 col-xl-10">
+                        <div class="service-details-left">
+                            <!-- 第一部分内容 -->
+                            <div class="service-details-text-1">
+                                <h2>超八成网暴，发生在"光天化日"下</h2>
+                            </div>
+                            <p>网络暴力在哪里发生？答案或许是：在光天化日之下。<strong>高达 143 起案件（占比 80.3%）</strong>属于"公开"施暴，施暴者选择在微博、抖音、贴吧、知乎等完全开放的平台发布攻击内容，任由恶意像野火般蔓延。</p>
+                            
+                            <p>相比之下，在微信群、QQ群等"半公开"空间里发生的网络暴力（34起），虽影响范围看似受限，却在熟人圈层中造成更深刻的伤害。当母亲被造谣于家长群、员工被同事在部门群集体诽谤时，<strong>熟人信任</strong>的崩塌会让受害者陷入"数字监狱"般的窒息感。</p>
+                            
+                            <!-- 第一个图表 -->
+                            <div class="chart-container mt-4 mb-2">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-10 col-xl-8">
+                                        <div class="interactive-chart">
+                                            <div class="chart-wrapper">
+                                                <h3 class="chart-title">网络暴力案件的传播场景分布</h3>
+                                                
+                                                <div class="chart-container-inner">
+                                                    <canvas id="scenesChart"></canvas>
+                                                    <div class="center-label" id="centerLabel">
+                                                        <div class="percentage" id="centerPercentage">100%</div>
+                                                        <div class="category" id="centerCategory">全部场景</div>
+                                                        <div class="description" id="centerDescription">点击环形图各区域查看详细分布</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p>"公开"意味着伤害被无限放大——一条诽谤帖可能被成千上万人看到、转发、评论，最终汇成淹没受害者的洪流。但也正因如此，公开场景下的网暴证据更易固定，传播路径清晰可查，<strong>"公共危害性"</strong>显而易见，为法律介入提供了充分依据。</p>
+                            
+                            <p>在这 178件进入司法程序的网暴案件中，平台分布呈现明显<strong>集中化</strong>：微博以 84 件、微信以 54 件占据主导，而论坛、贴吧、小红书、抖音、快手等平台的记录相对稀少。这并非意味着微博、微信的网暴更多，而是这些平台的结构更易留下 <strong>"可追溯痕迹"</strong>—— 微博的公开广场会沉积可查询的时间线，微信的点对点沟通让每句辱骂都明晰可查，论坛的楼层式争论能完整保存冲突过程。</p>
+                            
+                            <p>反观短视频平台，网暴来得快、消失得更快：评论流动、视频删除、记录碎片化，现实中的攻击可能更猛烈，但证据却像沙子一样<strong>难以抓取</strong>。小红书、B 站等兴趣社区的争执则更局部，难以扩散也难以沉淀足够证据链。司法文书呈现的，其实是被平台结构 "筛选" 后的网暴 —— 有对象、有记录、有迹可循的部分。网暴发生在哪个平台，往往决定了它能否被法律看见；而能否被看见，又决定了它能否被追责。</p>
+                            
+                            <!-- 气泡图 -->
+                            <div class="bubble-chart-container">
+                                <h1 class="bubble-chart-title">网络暴力案件平台频次占比</h1>
+                                <div id="bubble-chart"></div>
+                            </div>
+                            
+                            <div class="bubble-tooltip" id="bubble-tooltip"></div>
+                            
+                            <!-- 第二部分内容 - 直接连接，没有多余间距 -->
+                            <div class="service-details-top-text">
+                                <div class="site-heading mt-4">
+                                    <h2 class="section-title" style="color: var(--primary-color);">文字是网暴的"头号武器"，7成伤害藏在字符里</h2>
+                                </div>
+                                
+                                <!-- 添加文字形式详细图表 -->
+                                <div class="chart-container-2">
+                                    <canvas id="textUsageChart"></canvas>
+                                </div>
+                                <p class="chart-info">文字相关网暴形式分布|总计164次文字使用</p>
+                                <p>当指尖敲击键盘的瞬间，恶意正以不同形态在网络空间蔓延。在178起进入司法程序的网暴案件中，文字是网络暴力最锋利、最常用的"武器"。数据显示，文字形式<strong>以71.6%的占比（164次）</strong>成为绝对主导，无论是微博评论区的辱骂、微信聊天的诅咒，还是论坛帖子的造谣，简单的字符组合无需复杂技术门槛，就能轻易化作利刃。纯文字形式的网暴案件<strong>达115起（占比64.6%）</strong>，成为最主流的施暴模式——<span class="highlight-important">一段文字即可完成伤害传播，这种低门槛让恶意在网络空间随处可见。</span></p>
+                            </div>
+                            
+                            <div class="service-details-bottom-text">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6">
+                                        <!-- 替换为图片形式分析图表 -->
+                                        <div class="chart-container-2">
+                                            <canvas id="imageUsageChart"></canvas>
+                                        </div>
+                                        <p class="chart-info">图片相关网暴形式分布 | 总计40次图片使用</p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="site-heading">
+                                            <h2 class="section-title" style="color: var(--primary-color);">图片：文字的重要"帮凶"</h2>
+                                        </div>
+                                        
+                                        <p>图片是文字的重要"帮凶"，<strong>以17.5%的占比（40次）</strong>位居第二。伪造的聊天记录截图、恶意P图的丑照、带侮辱性文字的表情包，这些可视化恶意比文字更具冲击力，也让受害者名誉受损更严重。而文字+图片"的组合形式<strong>以32起（占比18.0%）</strong>成为最常见的复合施暴方式——<span class="highlight-important">文字负责精准攻击，图片负责强化可信度，二者联手让伤害翻倍。</span></p>
+                                        
+                                        <div class="data-container">
+                                            <div class="data-point">伪造聊天记录截图</div>
+                                            <div class="data-point">恶意P图丑照</div>
+                                            <div class="data-point">侮辱性表情包</div>
+                                            <div class="data-point">虚假信息配图</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-12 mt-4">
+                                        <div class="site-heading">
+                                            <h2 class="section-title" style="color: var(--primary-color);">视频："杀伤力"最强的存在</h2>
+                                        </div>
+                                        
+                                        <!-- 添加视频形式分析图表 -->
+                                        <div class="chart-container-2">
+                                            <canvas id="videoLethalityChart"></canvas>
+                                        </div>
+                                        <p class="chart-info">各网暴形式杀伤力对比（1-10分评分体系）</p>
+                                        
+                                        <p>视频形式虽<strong>仅占10.9%（25次）</strong>，却是"杀伤力"最强的存在。一段经过剪辑的虚假视频、带恶意旁白的实拍片段，凭借更强的代入感和传播力，能在短时间内引发全网围观，给受害者带来毁灭性打击。不过，多重形式组合的网暴并不多见，"文字+图片+视频"的全形式组合仅2起（占比1.1%），毕竟多重形式的制作和传播成本更高，也更容易留下可追溯证据。</p>
+                                        <div class="data-container">
+                                            <div class="data-point">剪辑虚假视频</div>
+                                            <div class="data-point">恶意旁白实拍</div>
+                                            <div class="data-point">隐私视频泄露</div>
+                                            <div class="data-point">误导性视频剪辑</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-12">
+                                        <div class="quote-box mt-4">
+                                            <p style="font-size: 1.15rem; font-weight: 500;">网暴的传播场景，早已决定了它的表达策略。在占比80%（142起）的公开网暴中，文字和图文组合是绝对主流——微博的公开广场、抖音的评论区，这些开放空间里，简单直接的表达能最快吸引关注、引发扩散；而在占比19.1%的半公开场景（如微信群、部门QQ群）中，视频形式的占比相对更高，封闭圈层内的传播无需追求大范围扩散，更具冲击力的视频反而能实现"精准伤害"。</p>
+                                        </div>
+                                        
+                                        <!-- 添加传播场景对比图表 -->
+                                        <div class="chart-container-2">
+                                            <canvas id="scenarioComparisonChart"></canvas>
+                                        </div>
+                                        <p class="chart-info">不同传播场景下的网暴形式分布对比</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-details-video mt-4">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5">
+                                        <div class="site-heading">
+                                            <p class="title" style="color: var(--accent-color); font-weight: 600; font-size: 1.1rem; letter-spacing: 1px;">数据总结</p>
+                                            <h2 style="color: var(--primary-color); margin-bottom: 20px;">核心发现与启示</h2>
+                                            
+                                            <div class="col-lg-12">
+                                                <div class="quote-box" style="background: rgba(176, 139, 87, 0.05); border-left-color: var(--accent-color);">
+                                                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--primary-color);"><span style="font-weight: 700; color: var(--accent-color);">从字符到图片，再到视频</span>，网暴的表达形式虽有不同，但伤害的本质从未改变。在虚拟空间里，每一个字符、每一张图片、每一段视频，都可能成为伤害他人的证据。低门槛的文字攻击最普遍，而高冲击力的视频伤害最深。数据提醒我们：<strong style="color: var(--primary-color);">网暴的形态在进化，反网暴的意识与措施也需要同步升级。</strong></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <!-- 修改后的综合数据总结图表 -->
+                                        <div class="service-video-box" style="border-radius: 8px; border: 1px solid rgba(176, 139, 87, 0.2); overflow: hidden;">
+                                            <div class="chart-container-2" style="height: 250px; margin: 0; border: none; box-shadow: none;">
+                                                <canvas id="summaryChart"></canvas>
+                                            </div>
+                                        </div>
+                                        <p class="chart-info text-center mt-3">网暴案件综合数据分析（178起司法程序案件）</p>
+                                    </div>
+                                </div>
+                            </div>
+                                                        <!-- 下一页按钮 -->
+                            <div class="row justify-content-center mt-5">
+                                <div class="col-lg-12 text-center">
+                                    <a href="contact.html" class="custom-btn" style="
+                                        background-color: #29406b !important;
+                                        color: white !important;
+                                        padding: 14px 40px !important;
+                                        font-size: 17px !important;
+                                        border-radius: 30px !important;
+                                        text-decoration: none !important;
+                                        display: inline-block !important;
+                                        font-weight: 600 !important;
+                                        border: none !important;
+                                        box-shadow: 0 5px 15px rgba(41, 64, 107, 0.2) !important;
+                                        transition: all 0.3s ease !important;
+                                        position: relative !important;
+                                        overflow: hidden !important;
+                                        z-index: 1 !important;
+                                    ">
+                                        <span style="position: relative; z-index: 2;">
+                                            查看下一页分析 
+                                            <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                                        </span>
+                                        <span style="
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                            background-color: #3a5a8a;
+                                            z-index: -1;
+                                            opacity: 0;
+                                            transition: opacity 0.3s ease;
+                                        "></span>
+                                    </a>
+                                    
+                                    <style>
+                                        .custom-btn:hover {
+                                            background-color: #3a5a8a !important;
+                                            transform: translateY(-3px) !important;
+                                            box-shadow: 0 8px 20px rgba(41, 64, 107, 0.3) !important;
+                                        }
+                                        
+                                        .custom-btn:hover span:last-child {
+                                            opacity: 1 !important;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Service Details End -->
+    </div>
+
+    <!-- jquery include -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/custom-menu.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+       // 第一个代码的图表脚本
+// 数据配置 - 修改颜色顺序：面积大用最浅色，面积小用深色
+const data = {
+    labels: ['公开场合', '半公开场合', '未明确'],
+    datasets: [{
+        data: [80.34, 19.1, 0.56],
+        backgroundColor: [
+            '#DCC294', // 公开场合（80.34%）- 面积最大，用最浅色
+            '#B0743F', // 半公开场合（19.1%）- 面积中等，用中间色
+            '#40220F'  // 未明确（0.56%）- 面积最小，用深色
+        ],
+        borderWidth: 2,
+        borderColor: '#FFFFFF',
+        hoverBorderWidth: 4,
+        hoverBorderColor: '#FFFFFF'
+    }]
+};;
+        
+        // 初始化中心标签内容
+        const centerLabel = document.getElementById('centerLabel');
+        const centerPercentage = document.getElementById('centerPercentage');
+        const centerCategory = document.getElementById('centerCategory');
+        const centerDescription = document.getElementById('centerDescription');
+        
+        // 更新中心标签
+        function updateCenterLabel(index) {
+            const categories = ['公开场合', '半公开场合', '未明确'];
+            const percentages = ['80.34%', '19.10%', '0.56%'];
+            const descriptions = [
+                '如微博、抖音、贴吧等公开社交平台',
+                '如微信群、QQ群等半封闭社交空间',
+                '传播场景不明确或无法归类'
+            ];
+            
+            if (index === undefined) {
+                centerPercentage.textContent = '100%';
+                centerCategory.textContent = '全部场景';
+                centerDescription.textContent = '点击各区域查看详细分布';
+            } else {
+                centerPercentage.textContent = percentages[index];
+                centerCategory.textContent = categories[index];
+                centerDescription.textContent = descriptions[index];
+            }
+        }
+        
+        // 初始化图表
+        const ctx = document.getElementById('scenesChart').getContext('2d');
+        const scenesChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%', // 减小空心部分，使环形图看起来更大
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.raw}%`;
+                            }
+                        },
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        titleFont: { size: 13 }, // 减小字体大小
+                        bodyFont: { size: 14, weight: 'bold' } // 减小字体大小
+                    }
+                },
+                onClick: function(evt, elements) {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        updateCenterLabel(index);
+                        
+                        centerLabel.style.transform = 'translate(-50%, -50%) scale(1.05)';
+                        setTimeout(() => {
+                            centerLabel.style.transform = 'translate(-50%, -50%) scale(1)';
+                        }, 150);
+                    }
+                },
+                onHover: function(evt, elements) {
+                    if (elements.length > 0) {
+                        evt.native.target.style.cursor = 'pointer';
+                    } else {
+                        evt.native.target.style.cursor = 'default';
+                    }
+                }
+            }
+        });
+        
+        // 初始化中心标签
+        updateCenterLabel();
+        
+        // 添加键盘交互支持
+        document.addEventListener('keydown', function(event) {
+            if (event.key === '1' || event.key === '2' || event.key === '3') {
+                const index = parseInt(event.key) - 1;
+                if (index >= 0 && index <= 2) {
+                    updateCenterLabel(index);
+                    
+                    const meta = scenesChart.getDatasetMeta(0);
+                    if (meta.data[index]) {
+                        const element = meta.data[index];
+                        const originalColor = data.datasets[0].backgroundColor[index];
+                        element.options.backgroundColor = '#B0743F';
+                        scenesChart.update();
+                        
+                        setTimeout(() => {
+                            element.options.backgroundColor = originalColor;
+                            scenesChart.update();
+                        }, 300);
+                    }
+                }
+            } else if (event.key === 'Escape' || event.key === '0') {
+                updateCenterLabel();
+            }
+        });
+        
+        // 第二个代码的图表脚本
+        // 添加简单的数据突出效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为所有highlight-data元素添加鼠标悬停效果
+            const highlightElements = document.querySelectorAll('.highlight-data');
+            highlightElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = 'rgba(176, 139, 87, 0.2)';
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'all 0.2s ease';
+                });
+                
+                el.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = 'rgba(176, 139, 87, 0.1)';
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // 为数据点添加点击效果
+            const dataPoints = document.querySelectorAll('.data-point');
+            dataPoints.forEach(point => {
+                point.addEventListener('click', function() {
+                    this.style.boxShadow = '0 0 0 3px rgba(176, 139, 87, 0.3)';
+                    setTimeout(() => {
+                        this.style.boxShadow = '';
+                    }, 500);
+                });
+                
+                // 添加鼠标悬停效果
+                point.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                point.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 2px 5px rgba(0,0,0,0.05)';
+                });
+            });
+            
+            // 为重要段落添加交互效果
+            const importantParagraphs = document.querySelectorAll('.highlight-important');
+            importantParagraphs.forEach(p => {
+                p.addEventListener('mouseenter', function() {
+                    this.style.borderLeftColor = '#192440';
+                    this.style.paddingLeft = '18px';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                p.addEventListener('mouseleave', function() {
+                    this.style.borderLeftColor = '#b08b57';
+                    this.style.paddingLeft = '15px';
+                });
+            });
+            
+            // 通用图表配置 - 调整字体大小以配合更小的图表
+            const commonChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 12, // 减小间距
+                            font: {
+                                size: 10, // 减小字体大小
+                                family: 'sans-serif'
+                            },
+                            color: '#192440'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(25, 36, 64, 0.9)',
+                        titleFont: { size: 12, weight: 'bold' }, // 减小字体大小
+                        bodyFont: { size: 11 }, // 减小字体大小
+                        padding: 10, // 减小内边距
+                        cornerRadius: 8,
+                        displayColors: true,
+                        boxPadding: 4
+                    }
+                },
+                animation: {
+                    duration: 1200, // 缩短动画时间
+                    easing: 'easeOutQuart'
+                }
+            };
+            
+            // 2. 文字形式使用图表 - 文字相关网暴分布
+            const textUsageCtx = document.getElementById('textUsageChart').getContext('2d');
+            new Chart(textUsageCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['纯文字', '文字+图片', '文字+视频', '文字+图片+视频'],
+                    datasets: [{
+                        label: '案件数量（起）',
+                        data: [115, 32, 13, 2],
+                        backgroundColor: ['#b08b57', '#d4c5a7', '#995A24', ' #DCC294'],
+                        borderRadius: 5, // 减小圆角
+                        borderWidth: 0,
+                        hoverBackgroundColor: ['#a07b47', '#c4b597', '#995A24', '#DCC294']
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(25, 36, 64, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#666666',
+                                font: { size: 10 }, // 减小字体大小
+                                callback: function(value) {
+                                    return value + '起';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#192440',
+                                font: { size: 10, weight: '500' } // 减小字体大小
+                            }
+                        }
+                    },
+                    plugins: {
+                        ...commonChartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: '文字相关网暴形式分布',
+                            font: { size: 13, weight: 'bold' }, // 减小字体大小
+                            color: '#192440',
+                            padding: { bottom: 12 } // 减小间距
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.raw || 0;
+                                    const total = 164; // 文字使用总次数
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${value}起案件 (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 3. 图片形式使用图表 - 图片相关网暴分布
+            const imageUsageCtx = document.getElementById('imageUsageChart').getContext('2d');
+            new Chart(imageUsageCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['文字+图片组合', '纯图片形式'],
+                    datasets: [{
+                        data: [32, 8],
+                        backgroundColor: ['#d4c5a7', '#b08b57'],
+                        borderColor: '#ffffff',
+                        borderWidth: 3,
+                        hoverOffset: 8 // 减小悬停偏移
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    plugins: {
+                        ...commonChartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: '图片相关网暴形式分布',
+                            font: { size: 13, weight: 'bold' }, // 减小字体大小
+                            color: '#192440',
+                            padding: { bottom: 12 } // 减小间距
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = 40; // 图片使用总次数
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value}起案件 (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 4. 视频杀伤力对比图表 - 雷达图
+            const videoLethalityCtx = document.getElementById('videoLethalityChart').getContext('2d');
+            new Chart(videoLethalityCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['传播力', '伤害程度', '制作门槛', '证据留存难度', '扩散速度'],
+                    datasets: [
+                        {
+                            label: '纯文字',
+                            data: [8, 6, 2, 5, 9],
+                            backgroundColor: 'rgba(176, 139, 87, 0.2)',
+                            borderColor: '#b08b57',
+                            pointBackgroundColor: '#b08b57',
+                            pointBorderColor: '#fff',
+                            borderWidth: 2,
+                            pointRadius: 4 // 减小点半径
+                        },
+                        {
+                            label: '文字+图片',
+                            data: [9, 8, 4, 7, 8],
+                            backgroundColor: 'rgba(212, 197, 167, 0.2)',
+                            borderColor: '#d4c5a7',
+                            pointBackgroundColor: '#d4c5a7',
+                            pointBorderColor: '#fff',
+                            borderWidth: 2,
+                            pointRadius: 4
+                        },
+                        {
+                            label: '视频形式',
+                            data: [10, 10, 7, 8, 7],
+                            backgroundColor: 'rgba(58, 80, 107, 0.2)',
+                            borderColor: '#3a506b',
+                            pointBackgroundColor: '#3a506b',
+                            pointBorderColor: '#fff',
+                            borderWidth: 2,
+                            pointRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(25, 36, 64, 0.08)'
+                            },
+                            grid: {
+                                color: 'rgba(25, 36, 64, 0.08)'
+                            },
+                            pointLabels: {
+                                color: '#192440',
+                                font: { size: 10, weight: '500' } // 减小字体大小
+                            },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                color: '#666',
+                                stepSize: 2,
+                                max: 10,
+                                min: 0,
+                                showLabelBackdrop: false,
+                                font: { size: 9 } // 减小字体大小
+                            }
+                        }
+                    },
+                    plugins: {
+                        ...commonChartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: '各网暴形式多维度对比',
+                            font: { size: 13, weight: 'bold' }, // 减小字体大小
+                            color: '#192440',
+                            padding: { bottom: 12 } // 减小间距
+                        }
+                    }
+                }
+            });
+            
+            // 5. 传播场景对比图表 - 修改颜色
+            const scenarioCtx = document.getElementById('scenarioComparisonChart').getContext('2d');
+            new Chart(scenarioCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['纯文字', '文字+图片', '文字+视频', '纯图片', '纯视频'],
+                    datasets: [
+                        {
+                            label: '公开场景（142起）',
+                            data: [102, 28, 8, 3, 1],
+                            backgroundColor: '#995A24', // 最深的颜色
+                            borderRadius: 5, // 减小圆角
+                            borderWidth: 0,
+                            hoverBackgroundColor: '#80491C' // 稍微加深的悬停颜色
+                        },
+                        {
+                            label: '半公开场景（34起）',
+                            data: [13, 4, 5, 5, 7],
+                            backgroundColor: '#DCC294', // 最浅的颜色
+                            borderRadius: 5, // 减小圆角
+                            borderWidth: 0,
+                            hoverBackgroundColor: '#C8B084' // 稍微加深的悬停颜色
+                        }
+                    ]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(25, 36, 64, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#666666',
+                                font: { size: 10 }, // 减小字体大小
+                                callback: function(value) {
+                                    return value + '起';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#192440',
+                                font: { size: 10, weight: '500' } // 减小字体大小
+                            }
+                        }
+                    },
+                    plugins: {
+                        ...commonChartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: '不同传播场景的网暴形式分布对比',
+                            font: { size: 13, weight: 'bold' }, // 减小字体大小
+                            color: '#192440',
+                            padding: { bottom: 12 } // 减小间距
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const datasetLabel = context.dataset.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${datasetLabel}: ${value}起 (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                }
+            });
+            
+            // 6. 修改后的总结图表 - 综合数据分析（修复悬停卡顿问题）
+            const summaryCtx = document.getElementById('summaryChart').getContext('2d');
+
+            // 准备数据
+            const summaryLabels = ['纯文字', '文字+图片', '文字+视频', '纯图片', '纯视频', '全形式组合'];
+            const caseData = [115, 32, 13, 8, 0, 2];
+            const lethalityData = [6, 9, 8, 7, 0, 10];
+
+            // 计算Y轴最大值，确保点不会超出画布
+            const maxCaseValue = Math.max(...caseData);
+            const maxLethalityValue = Math.max(...lethalityData);
+
+            // 创建图表实例
+            const summaryChart = new Chart(summaryCtx, {
+                type: 'bar',
+                data: {
+                    labels: summaryLabels,
+                    datasets: [
+                        // 柱状图 - 案件数量
+                        {
+                            label: '案件数量（起）',
+                            data: caseData,
+                            backgroundColor: [
+                                'rgba(176, 139, 87, 0.85)', // 纯文字
+                                'rgba(212, 197, 167, 0.85)', // 文字+图片
+                                'rgba(184, 116, 63, 0.85)',  // 文字+视频
+                                'rgba(220, 194, 148, 0.85)', // 纯图片
+                                'rgba(153, 90, 36, 0.85)',   // 纯视频
+                                'rgba(212, 197, 167, 0.85)'  // 全形式组合
+                            ],
+                            borderRadius: 5, // 减小圆角
+                            borderWidth: 0,
+                            yAxisID: 'y',
+                            order: 2 // 确保柱状图先绘制（在底层）
+                        },
+                        // 折线图 - 杀伤力评分
+                        {
+                            label: '杀伤力评分（1-10）',
+                            data: lethalityData,
+                            backgroundColor: 'rgba(25, 36, 64, 0.05)',
+                            borderColor: '#192440',
+                            borderWidth: 2, // 减小边框宽度
+                            type: 'line',
+                            yAxisID: 'y1',
+                            tension: 0.3,
+                            pointBackgroundColor: '#192440',
+                            pointBorderColor: '#ffffff',
+                            pointBorderWidth: 2,
+                            pointRadius: 4, // 减小点半径
+                            pointHoverRadius: 6, // 减小悬停半径
+                            fill: false,
+                            order: 1 // 确保折线图后绘制（在上层）
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    // 移除可能导致冲突的层级设置
+                    elements: {
+                        point: {
+                            hoverRadius: 6, // 减小悬停半径
+                            hoverBorderWidth: 2
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                        axis: 'x'
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 12, // 减小间距
+                                font: {
+                                    size: 10, // 减小字体大小
+                                    family: 'sans-serif'
+                                },
+                                color: '#192440'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(25, 36, 64, 0.9)',
+                            titleFont: { size: 12, weight: 'bold' }, // 减小字体大小
+                            bodyFont: { size: 11 }, // 减小字体大小
+                            padding: 10, // 减小内边距
+                            cornerRadius: 8,
+                            displayColors: true,
+                            boxPadding: 4,
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.dataset.label || '';
+                                    const value = context.raw || 0;
+                                    
+                                    if (label.includes('案件数量')) {
+                                        return `${label}: ${value}起`;
+                                    } else {
+                                        return `${label}: ${value}分`;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            position: 'left',
+                            suggestedMax: maxCaseValue * 1.1,
+                            title: {
+                                display: true,
+                                text: '案件数量（起）',
+                                color: '#192440',
+                                font: { weight: 'bold', size: 11 } // 减小字体大小
+                            },
+                            grid: {
+                                color: 'rgba(25, 36, 64, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#666666',
+                                font: { size: 10 }, // 减小字体大小
+                                padding: 5,
+                                callback: function(value) {
+                                    return value + '起';
+                                }
+                            }
+                        },
+                        y1: {
+                            beginAtZero: true,
+                            position: 'right',
+                            suggestedMax: maxLethalityValue * 1.2,
+                            title: {
+                                display: true,
+                                text: '杀伤力评分',
+                                color: '#192440',
+                                font: { weight: 'bold', size: 11 } // 减小字体大小
+                            },
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#666666',
+                                font: { size: 10 }, // 减小字体大小
+                                stepSize: 2,
+                                padding: 5,
+                                min: 0,
+                                max: 11
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#192440',
+                                font: { 
+                                    size: 10, // 减小字体大小
+                                    weight: '500' 
+                                }
+                            }
+                        }
+                    },
+                    // 简化动画
+                    animation: {
+                        duration: 800, // 缩短动画时间
+                        easing: 'easeOutQuart'
+                    },
+                    // 优化悬停性能
+                    hover: {
+                        mode: 'index',
+                        intersect: false,
+                        animationDuration: 200
+                    },
+                    // 移除可能导致问题的onProgress回调
+                    // 移除可能导致冲突的z层级设置
+                    // 移除可能导致问题的layout.padding设置
+                }
+            });
+            
+            // 气泡图代码 - 从第二个HTML文件中整合
+            createBubbleChart();
+        });
+        
+        // 气泡图函数
+        function createBubbleChart() {
+            // 数据准备
+            const platformData = [
+                { platform: "微博", value: 84 },
+                { platform: "微信", value: 54 },
+                { platform: "其他", value: 34 },
+                { platform: "论坛", value: 11 },
+                { platform: "抖音", value: 10 },
+                { platform: "快手", value: 4 },
+                { platform: "贴吧", value: 5 },
+                { platform: "B站", value: 2 },
+                { platform: "小红书", value: 5 }
+            ];
+            
+            // 计算总数和百分比
+            const totalValue = d3.sum(platformData, d => d.value);
+            platformData.forEach(d => {
+                d.percentage = (d.value / totalValue * 100).toFixed(1);
+            });
+            
+            // 设置尺寸 - 减小整体尺寸
+            const width = 800; // 减小宽度
+            const height = 380; // 减小高度
+            const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+            const chartWidth = width - margin.left - margin.right;
+            const chartHeight = height - margin.top - margin.bottom;
+            
+            // 创建SVG容器
+            const svg = d3.select("#bubble-chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("viewBox", [0, 0, width, height])
+                .attr("style", "max-width: 100%; height: auto;");
+            
+            // 添加一个组来包含所有气泡，并应用边距
+            const chartGroup = svg.append("g")
+                .attr("transform", `translate(${margin.left}, ${margin.top})`);
+            
+            // 定义颜色方案
+            const colorPalette = {
+                light: ["#DCC294", "#B0743F", "#CA9D66", "#C9CACA"],
+                dark: ["#995A24", "#40220F"]
+            };
+            
+            // 为每个平台分配颜色
+            const colorScale = d3.scaleOrdinal()
+                .domain(platformData.map(d => d.platform))
+                .range([
+                    colorPalette.light[0], // B站
+                    colorPalette.light[1], // 抖音
+                    colorPalette.light[2], // 快手
+                    colorPalette.light[3], // 论坛
+                    colorPalette.light[0], // 贴吧
+                    colorPalette.dark[0],  // 微博（深色）
+                    colorPalette.dark[1],  // 微信（深色）
+                    colorPalette.light[1], // 小红书
+                    colorPalette.light[2]  // 其他
+                ]);
+            
+            // 气泡半径比例尺 - 减小气泡尺寸
+            const maxRadius = 75; // 减小最大气泡半径
+            const minRadius = 35;  // 减小最小气泡半径
+            
+            const radiusScale = d3.scaleSqrt()
+                .domain([0, d3.max(platformData, d => d.value)])
+                .range([minRadius, maxRadius]);
+            
+            // 计算气泡总面积
+            const calculateTotalArea = () => {
+                return d3.sum(platformData, d => Math.PI * Math.pow(radiusScale(d.value), 2));
+            };
+            
+            // 使用气泡填充算法，让气泡尽可能大且不重叠
+            function createBubbleLayout() {
+                const bubbles = platformData.map(d => ({
+                    ...d,
+                    radius: radiusScale(d.value),
+                    x: 0,
+                    y: 0
+                }));
+                
+                // 按半径从大到小排序
+                bubbles.sort((a, b) => b.radius - a.radius);
+                
+                // 放置最大的气泡在中心
+                bubbles[0].x = chartWidth / 2;
+                bubbles[0].y = chartHeight / 2;
+                
+                // 放置其他气泡
+                for (let i = 1; i < bubbles.length; i++) {
+                    let bestCandidate = null;
+                    let bestDistance = -Infinity;
+                    
+                    // 对于每个已放置的气泡，尝试在其周围放置新气泡
+                    for (let j = 0; j < i; j++) {
+                        const placedBubble = bubbles[j];
+                        
+                        // 尝试多个角度
+                        for (let angle = 0; angle < 2 * Math.PI; angle += 0.2) {
+                            const candidateX = placedBubble.x + (placedBubble.radius + bubbles[i].radius) * Math.cos(angle);
+                            const candidateY = placedBubble.y + (placedBubble.radius + bubbles[i].radius) * Math.sin(angle);
+                            
+                            // 检查是否在边界内
+                            if (candidateX - bubbles[i].radius < 0 || candidateX + bubbles[i].radius > chartWidth ||
+                                candidateY - bubbles[i].radius < 0 || candidateY + bubbles[i].radius > chartHeight) {
+                                continue;
+                            }
+                            
+                            // 检查是否与其他气泡重叠
+                            let overlap = false;
+                            for (let k = 0; k < i; k++) {
+                                const dx = candidateX - bubbles[k].x;
+                                const dy = candidateY - bubbles[k].y;
+                                const distance = Math.sqrt(dx * dx + dy * dy);
+                                
+                                if (distance < bubbles[i].radius + bubbles[k].radius - 0.1) {
+                                    overlap = true;
+                                    break;
+                                }
+                            }
+                            
+                            if (!overlap) {
+                                // 计算到中心的距离，优先选择较远的位置
+                                const centerX = chartWidth / 2;
+                                const centerY = chartHeight / 2;
+                                const distanceToCenter = Math.sqrt(
+                                    Math.pow(candidateX - centerX, 2) + 
+                                    Math.pow(candidateY - centerY, 2)
+                                );
+                                
+                                if (distanceToCenter > bestDistance) {
+                                    bestDistance = distanceToCenter;
+                                    bestCandidate = { x: candidateX, y: candidateY };
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (bestCandidate) {
+                        bubbles[i].x = bestCandidate.x;
+                        bubbles[i].y = bestCandidate.y;
+                    } else {
+                        // 如果找不到合适位置，放在边界附近
+                        bubbles[i].x = Math.random() * (chartWidth - 2 * bubbles[i].radius) + bubbles[i].radius;
+                        bubbles[i].y = Math.random() * (chartHeight - 2 * bubbles[i].radius) + bubbles[i].radius;
+                    }
+                }
+                
+                return bubbles;
+            }
+            
+            // 使用力导向布局进行微调，确保气泡不重叠且分布均匀
+            function optimizeLayout(bubbles) {
+                const simulation = d3.forceSimulation(bubbles)
+                    .force("center", d3.forceCenter(chartWidth / 2, chartHeight / 2).strength(0.03))
+                    .force("collision", d3.forceCollide()
+                        .radius(d => d.radius + 3)
+                        .strength(0.8)
+                        .iterations(3))
+                    .force("x", d3.forceX(chartWidth / 2).strength(0.03))
+                    .force("y", d3.forceY(chartHeight / 2).strength(0.03))
+                    .stop();
+                
+                // 运行模拟
+                for (let i = 0; i < 120; ++i) {
+                    simulation.tick();
+                    
+                    // 确保气泡在边界内
+                    bubbles.forEach(bubble => {
+                        bubble.x = Math.max(bubble.radius, Math.min(chartWidth - bubble.radius, bubble.x));
+                        bubble.y = Math.max(bubble.radius, Math.min(chartHeight - bubble.radius, bubble.y));
+                    });
+                }
+                
+                return bubbles;
+            }
+            
+            // 创建气泡布局
+            const bubbleLayout = createBubbleLayout();
+            const optimizedBubbles = optimizeLayout(bubbleLayout);
+            
+            // 创建气泡组
+            const bubbles = chartGroup.selectAll(".bubble")
+                .data(optimizedBubbles)
+                .enter()
+                .append("g")
+                .attr("class", "bubble")
+                .attr("transform", d => `translate(${d.x}, ${d.y})`)
+                .style("cursor", "pointer");
+            
+            // 绘制气泡 - 使用减小后的尺寸
+            bubbles.append("circle")
+                .attr("r", d => d.radius)
+                .attr("fill", d => colorScale(d.platform))
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 3) // 减小边框宽度
+                .attr("opacity", 0.96)
+                .on("mouseover", function(event, d) {
+                    // 高亮当前气泡
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr("stroke-width", 5) // 减小高亮边框宽度
+                        .attr("stroke", "#40220F")
+                        .attr("opacity", 1);
+                    
+                    // 显示工具提示
+                    const tooltip = d3.select("#bubble-tooltip");
+                    tooltip
+                        .style("opacity", 1)
+                        .html(`
+                            <div class="bubble-tooltip-title">${d.platform}</div>
+                            <div class="bubble-tooltip-value">案件数: ${d.value}</div>
+                            <div class="bubble-tooltip-percentage">占比: ${d.percentage}%</div>
+                        `)
+                        .style("left", (event.pageX + 15) + "px")
+                        .style("top", (event.pageY - 15) + "px");
+                })
+                .on("mousemove", function(event) {
+                    // 移动工具提示
+                    d3.select("#bubble-tooltip")
+                        .style("left", (event.pageX + 15) + "px")
+                        .style("top", (event.pageY - 15) + "px");
+                })
+                .on("mouseout", function() {
+                    // 恢复气泡样式
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr("stroke-width", 3) // 恢复为减小后的边框宽度
+                        .attr("stroke", "#fff")
+                        .attr("opacity", 0.96);
+                    
+                    // 隐藏工具提示
+                    d3.select("#bubble-tooltip")
+                        .style("opacity", 0);
+                });
+            
+            // 添加平台标签 - 调整字体大小
+            bubbles.append("text")
+                .attr("class", "bubble-label")
+                .text(d => d.platform)
+                .attr("dy", "0.35em")
+                .style("font-size", d => {
+                    const radius = d.radius;
+                    // 根据气泡大小调整字体大小
+                    if (radius > 60) return "15px"; // 减小字体大小
+                    if (radius > 45) return "13px";
+                    if (radius > 35) return "11px";
+                    return "10px";
+                })
+                .style("font-weight", "bold");
+            
+            // 添加交互提示
+            chartGroup.append("text")
+                .attr("x", chartWidth - 10)
+                .attr("y", chartHeight - 10)
+                .attr("text-anchor", "end")
+                .attr("fill", "#999")
+                .attr("font-size", "10px") // 减小字体大小
+                .text("鼠标悬停查看详情");
+        }
+    </script>
+</body>
+</html>

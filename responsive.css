@@ -1,0 +1,568 @@
+@media(max-width: 767px) {
+
+    .header-area .header-btn {
+        font-size: 0;
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .header-btn i {
+        display: block;
+        font-size: 24px
+    }
+
+    .header-toggle {
+        font-size: 0
+    }
+
+    .inner-layer {
+        width: 200px;
+        height: 200px;
+        left: 0
+    }
+
+    .about-img {
+        margin-bottom: 50px
+    }
+
+    .about-img img {
+        width: 170px;
+    }
+
+    .about_shape {
+        bottom: 0px;
+        right: 0px;
+    }
+
+    .counter-area {
+        padding-bottom: 80px
+    }
+
+    .single-counter-box {
+        margin-bottom: 20px
+    }
+
+    .choose_img {
+        position: inherit
+    }
+
+    .expart-area {
+        padding-bottom: 0
+    }
+
+    .consulting_left_img,
+    .consulting_right_img {
+        width: 190px
+    }
+
+    .faq-box:after {
+        visibility: hidden
+    }
+
+    .faq-img:after {
+        position: absolute;
+        content: "";
+        width: 40px;
+        height: 60%;
+        background: #172540;
+        left: -30px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .line-1,
+    .line-2,
+    .faq-img:before {
+        background: #172540;
+    }
+
+
+
+    .faq-accordion {
+        padding: 20px;
+    }
+
+    .footer-about {
+        text-align: center;
+        margin-bottom: 50px
+    }
+
+    .mainmenu nav {
+        height: 10em;
+        overflow-y: scroll;
+    }
+
+    .sidebar-logo {
+        margin-bottom: 30px
+    }
+
+    .mainmenu {
+        width: 320px
+    }
+
+    .banner-text h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .banner-inn {
+        padding: 0;
+        text-align: left
+    }
+
+    .banner-img {
+        right: 0;
+        bottom: -80px;
+        width: 340px;
+        margin-top: -50px
+    }
+
+    .banner-inn p br {
+        display: none
+    }
+
+    .site-heading .heading {
+        font-size: 28px;
+        line-height: 42px;
+    }
+
+    .site-heading .heading br {
+        display: none
+    }
+
+    .about-area .dotted-layer {
+        width: 400px;
+        height: 400px;
+
+    }
+
+    .about-area {
+        padding-top: 50px;
+        padding-bottom: 100px
+    }
+
+    .choose-area {
+        margin-top: 0
+    }
+
+    .choose-box .col-lg-6:nth-child(3) .single-choose-box,
+    .choose-box .col-lg-6:nth-child(4) .single-choose-box {
+        padding-left: 50px;
+    }
+
+    .choose_img {
+        position: absolute;
+        left: auto;
+        bottom: -145px;
+        width: 45%;
+        right: 0;
+    }
+
+    .faq-img {
+        display: none
+    }
+
+    .consultation-form-bg {
+        position: inherit;
+        width: 100%;
+    }
+
+    .subscribe-area .site-heading {
+        margin-bottom: 0;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .footer-widget {
+        margin: 30px 0
+    }
+
+    .breadcrumb-area {
+        padding-top: 150px
+    }
+
+    .breadcrumb-heading h1 {
+        font-size: 38px;
+    }
+
+    .about-area.about-page {
+        padding-top: 130px
+    }
+
+    .error-text h2 {
+        font-size: 80px
+    }
+
+    .error-text h5 {
+        font-size: 22px
+    }
+
+    .blog-replay-box {
+        margin-left: 100px;
+    }
+
+}
+
+@media(max-width: 575px) {
+    .faq-img {
+        display: block
+    }
+
+    .mainmenu nav {
+        height: 20em;
+        overflow-y: scroll;
+    }
+
+    .banner-text h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .banner-inn {
+        padding: 0;
+        text-align: center
+    }
+
+    .banner-img {
+        position: relative;
+        right: 0;
+        bottom: -80px;
+        width: auto;
+        float: none;
+        margin-top: -50px
+    }
+
+    .banner-inn p br {
+        display: none
+    }
+
+    .about-area {
+        padding-top: 115px;
+        padding-bottom: 100px;
+    }
+
+    .site-heading .heading {
+        font-size: 32px;
+        line-height: 44px;
+    }
+
+    .choose-area {
+        margin-top: 0
+    }
+
+    .choose-box .col-lg-6:nth-child(3) .single-choose-box,
+    .choose-box .col-lg-6:nth-child(4) .single-choose-box {
+        padding-left: 50px;
+    }
+
+    .choose_img {
+        position: inherit;
+        margin-top: -100px;
+        width: auto
+    }
+
+    .consulting-text p br {
+        display: none
+    }
+
+    .consulting_left_img,
+    .consulting_right_img {
+        width: 120px;
+    }
+
+    .accordion-button,
+    .accordion-button:not(.collapsed) {
+        font-size: 18px
+    }
+
+    .faq-accordion {
+        padding: 0;
+        margin-top: 30px;
+    }
+
+    .faq-box {
+        padding-bottom: 90px
+    }
+
+    .consultation-form-bg {
+        position: inherit;
+        width: 100%;
+    }
+
+    .subscribe-box {
+        padding: 30px
+    }
+
+    .subscribe-form {
+        margin-top: 20px
+    }
+
+    .subscribe-form input {
+        width: 100%
+    }
+
+    .subscribe-form button {
+        position: inherit;
+        width: 100%;
+        height: 60px;
+        margin-top: 10px;
+    }
+
+    .subscribe-area .site-heading {
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .footer-widget {
+        margin: 20px 0;
+    }
+
+    .opening-hour ul li p span {
+        display: block
+    }
+
+    .breadcrumb-area {
+        padding-top: 150px
+    }
+
+    .breadcrumb-heading h1 {
+        font-size: 38px;
+    }
+
+    .breadcrumb-heading {
+        text-align: center
+    }
+
+    .about-area.about-page {
+        padding-top: 170px
+    }
+
+    .blog-sidebar {
+        margin-top: 50px
+    }
+}
+
+@media(max-width: 420px) {
+    .mainmenu {
+        width: 100%
+    }
+}
+
+@media (min-width: 800px) and (max-width: 850px) and (max-height: 500px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+    .header-btn i {
+        display: none;
+    }
+
+
+    .inner-layer {
+        width: 200px;
+        height: 200px;
+        left: 0
+    }
+
+    .about-img {
+        margin-bottom: 50px
+    }
+
+    .about-img img {
+        width: 100%;
+    }
+
+    .about_shape {
+        bottom: 0px;
+        right: 0px;
+        width: 120px !important;
+    }
+
+    .counter-area {
+        padding-bottom: 80px
+    }
+
+    .single-counter-box {
+        margin-bottom: 20px
+    }
+
+    .choose_img {
+        position: inherit
+    }
+
+    .expart-area {
+        padding-bottom: 0
+    }
+
+    .consulting_left_img,
+    .consulting_right_img {
+        width: 190px
+    }
+
+    .faq-box:after {
+        visibility: hidden
+    }
+
+    .faq-img:after {
+        position: absolute;
+        content: "";
+        width: 40px;
+        height: 60%;
+        background: #172540;
+        left: -30px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .line-1,
+    .line-2,
+    .faq-img:before {
+        background: #172540;
+    }
+
+
+
+    .faq-accordion {
+        padding: 20px;
+    }
+
+    .footer-about {
+        text-align: center;
+        margin-bottom: 50px
+    }
+
+    .mainmenu nav {
+        height: 26em;
+        overflow-y: scroll;
+    }
+
+    .sidebar-logo {
+        margin-bottom: 90px
+    }
+
+    .mainmenu {
+        width: 320px
+    }
+
+    .banner-text h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .banner-inn {
+        padding: 0;
+        text-align: left
+    }
+
+    .banner-img {
+        right: 0;
+        bottom: -80px;
+        width: 340px;
+        margin-top: -50px
+    }
+
+    .banner-inn p br {
+        display: none
+    }
+
+    .site-heading .heading {
+        font-size: 28px;
+        line-height: 42px;
+    }
+
+    .site-heading .heading br {
+        display: none
+    }
+
+    .about-area .dotted-layer {
+        width: 400px;
+        height: 400px;
+
+    }
+
+    .about-area {
+        padding-top: 50px;
+        padding-bottom: 100px
+    }
+
+    .choose-area {
+        margin-top: 0
+    }
+
+    .choose-box .col-lg-6:nth-child(3) .single-choose-box,
+    .choose-box .col-lg-6:nth-child(4) .single-choose-box {
+        padding-left: 50px;
+    }
+
+    .choose_img {
+        position: absolute;
+        left: auto;
+        bottom: -145px;
+        width: 45%;
+        right: 0;
+    }
+
+    .faq-img {
+        display: none
+    }
+
+    .consultation-form-bg {
+        position: absolute;
+        width: 50%;
+    }
+
+    .subscribe-area .site-heading {
+        margin-bottom: 0;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .footer-widget {
+        margin: 30px 0
+    }
+
+    .breadcrumb-area {
+        padding-top: 150px
+    }
+
+    .breadcrumb-heading h1 {
+        font-size: 38px;
+    }
+
+    .about-area.about-page {
+        padding-top: 130px
+    }
+}
+
+@media (width: 1024px) {
+    .banner-text p br {
+        display: none
+    }
+
+    .about-area .dotted-layer {
+        display: none
+    }
+
+    .site-heading .heading {
+        font-size: 38px;
+        line-height: 50px;
+    }
+
+    .single-counter-box h3 {
+        font-size: 20px;
+    }
+
+    .pricing-box {
+        padding: 30px
+    }
+}
+
+@media(max-width: 1350px) {
+    .mainmenu nav {
+        height: 10em;
+        overflow-y: scroll;
+    }
+}

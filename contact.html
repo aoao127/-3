@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>《网络暴力如何被审判？一份来自法庭的数据全景观察》</title>
+      <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+      <!-- css include -->
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="assets/css/all.min.css">
+      <link rel="stylesheet" href="assets/css/animate.css">
+      <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="assets/css/magnific-popup.css">
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href="assets/css/responsive.css">
+      <style>
+         /* 自定义样式 */
+         .single-contact-box {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+         }
+         
+         .single-contact-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+         }
+         
+         /* 五个建议居中 */
+         .static-contact-info.text-center p {
+            text-align: center !important;
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.5;
+         }
+         
+         /* 标题区域样式调整 - 恢复原始大小 */
+         .breadcrumb-area .breadcrumb-heading h1 {
+            white-space: normal;
+            background-size: cover !important;
+            background-position: center !important;
+            padding: 40px 30px; /* 恢复原始内边距 */
+            margin-bottom: 20px; /* 恢复原始下边距 */
+            border-radius: 10px;
+            position: relative;
+         }
+         
+         /* 修正标题容器样式 - 恢复原始大小 */
+         .breadcrumb-heading h1 {
+           font-size: 3.5rem; /* 恢复原始更大的字体大小 */
+           font-weight: 700;
+           line-height: 1.3;
+           margin-bottom: 15px;
+         }
+         
+         /* 修正响应式调整 */
+         @media (max-width: 768px) {
+            .breadcrumb-area .breadcrumb-heading h1 {
+               white-space: normal;
+               padding: 20px 15px;
+               font-size: 2.2rem; /* 移动端标题大小也相应增大 */
+               line-height: 1.3;
+            }
+            
+            /* 修正五个建议的响应式样式 */
+            .static-contact-info.text-center p {
+               font-size: 14px;
+               text-align: left !important;
+               padding: 0 8px;
+               margin-bottom: 10px;
+            }
+            
+            .consultation-box .quote-box p {
+               font-size: 1rem !important;
+               line-height: 1.5 !important;
+            }
+            
+            .breadcrumb-heading h1 {
+               font-size: 2.8rem; /* 移动端标题大小 */
+            }
+         }
+         
+         /* 添加缺失的样式 */
+         .emergency-contact {
+            margin: 15px 0;
+         }
+         
+         .emergency-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #162542;
+         }
+         
+         .emergency-icon {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: #162542;
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 3px;
+         }
+         
+         .emergency-content {
+            flex: 1;
+         }
+         
+         .emergency-content h4 {
+            margin-bottom: 3px;
+            color: #162542;
+            font-size: 16px;
+         }
+         
+         .emergency-content p {
+            font-size: 14px;
+         }
+         
+         .safety-tips {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+         }
+         
+         .safety-tips h4 {
+            font-size: 16px;
+         }
+         
+         .safety-tips ul {
+            padding-left: 18px;
+            margin-bottom: 0;
+         }
+         
+         .safety-tips li {
+            margin-bottom: 6px;
+            line-height: 1.4;
+            font-size: 14px;
+         }
+         
+         /* 确保文本颜色一致 */
+         .static-info-box h3,
+         .static-info-box h4,
+         .static-info-box p,
+         .static-info-box li {
+            color: #333 !important;
+         }
+         
+         /* 缩小contact-box中的图片 */
+         .single-contact-box img {
+            max-width: 50px;
+            margin-bottom: 15px;
+         }
+         
+         /* 缩小contact-box中的标题 */
+         .single-contact-box h3 {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 0;
+         }
+         
+         /* 缩小178起判决描述部分 */
+         .consultation-box .quote-box {
+            padding: 25px 20px !important;
+         }
+         
+         .consultation-box .quote-box p {
+            font-size: 1.2rem !important;
+            line-height: 1.6 !important;
+            margin-top: 15px !important;
+         }
+         
+         /* 缩小问题标题 */
+         .site-heading h2.heading {
+            font-size: 1.5rem !important;
+         }
+         
+         /* 缩小订阅区域标题 */
+         .subscribe-area .site-heading h2.heading {
+            font-size: 1.5rem !important;
+            line-height: 1.4 !important;
+         }
+         
+         .subscribe-area .site-heading p.title {
+            font-size: 1rem !important;
+            margin-bottom: 10px !important;
+         }
+         
+         /* 缩小图片显示区域 */
+         .section-image img {
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 10px 0; /* 恢复正常边距 */
+         }
+         
+         /* 缩小静态信息框 */
+         .static-info-box h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+         }
+         
+         /* 缩小导航菜单 */
+         .header-btn {
+            padding: 8px 15px !important;
+            font-size: 14px !important;
+         }
+         
+         /* 缩小面包屑区域的图片 */
+         .breadcrumb-img img {
+            max-width: 80%;
+            height: auto;
+         }
+         
+         /* 新增：调整特定部分之间的间距 - 紧挨但不重叠 */
+         
+         /* 压缩图片展示区域与前面内容之间的间距 */
+         .image-display-area {
+            margin-top: 0 !important; /* 移除负边距 */
+            padding-top: 5px !important; /* 添加小间距 */
+         }
+         
+         /* 压缩"我们发现"与图片之间的间距 */
+         section.contact-area:nth-of-type(3) {
+            margin-top: 5px !important; /* 添加小间距 */
+            padding-top: 5px !important;
+         }
+         
+         /* 压缩"面对着数不胜数的..."与"我们发现"之间的间距 */
+         section.contact-area:nth-of-type(4) {
+            margin-top: 10px !important; /* 添加小间距 */
+            padding-top: 5px !important;
+         }
+         
+         /* 压缩五个措施与"面对着数不胜数的..."之间的间距 */
+         section.contact-area:nth-of-type(5) {
+            margin-top: 5px !important; /* 添加小间距 */
+            padding-top: 5px !important;
+         }
+         
+         /* 确保所有contact-area部分有正常间距 */
+         .contact-area.page-start {
+            padding-top: 20px !important;
+            padding-bottom: 20px !important;
+         }
+         
+         /* 图片展示区域容器间距 */
+         .image-display-area .container {
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+         }
+         
+         /* 压缩咨询框间距 */
+         .consultation-box {
+            margin-bottom: 0 !important;
+         }
+         
+         /* 确保最后一个contact-box没有过多底部间距 */
+         .single-contact-box:last-of-type {
+            margin-bottom: 10px !important;
+         }
+      </style>
+   </head>
+   <body>
+     
+     <div class="body_wrap">
+        <!-- Header Area Start -->
+        <header class="header-area">
+           <div class="container" style="max-width: 100%; padding-left: 50px; padding-right: 50px;">
+              <div class="header-inn">
+                 <div class="header-action">
+                    <a href="index.html" class="header-btn"><i class="fas fa-envelope"></i>网络暴力</a>
+                 </div>
+                 <div class="header-logo">
+                    <a href="index.html"><img src="assets/img/logo8.png" alt="img"></a>
+                 </div>
+                 <div class="navigation">
+                    <a href="javascript:;" class="header-toggle" id="toggle">
+                       菜单
+                       <div><span></span><span></span><span></span></div>
+                    </a>
+                 </div>
+              </div>
+           </div>
+        </header>
+        <!-- Header Area End -->
+        
+         <!-- Menu Start -->
+         <div class="mainmenu">
+            <a href="javascript:;" class="closeMenu"><img src="assets/img/close.svg" alt="close" /></a>
+            <div class="sidebar-logo">
+               <a href="index.html">
+               <img src="assets/img/logo8.png" alt="logo" />
+               </a>
+            </div>
+            <nav>
+               <ul>
+                  <li><a href="index.html">1.审判的"季节"：网暴案件的时间轨迹</a></li>
+                  <li><a href="blog-details.html">2.谁在施暴？为何施暴？如何施暴？</a></li>
+                  <li><a href="service-details.html">3.在何处施暴？以何施暴？</a></li>
+                   <li><a href="contact.html">4.不止于判决：我们如何应对网暴？</a></li>
+               </ul>
+            </nav>
+         </div>
+         <!-- Menu End -->
+        
+        <!-- Breadcrumb Start -->
+        <section class="breadcrumb-area pb-0">
+           <div class="container">
+              <div class="row align-items-end">
+                 <div class="col-lg-8 col-sm-6">
+                    <div class="breadcrumb-heading wow fadeInLeft">
+                       <h1>不止于判决：<br>我们如何应对网暴？</h1>
+                       <ul class="breadcrumb-action">
+                          <li><a href="index.html"><i class="fas fa-home-alt"></i>首页</a></li>
+                       </ul>
+                    </div>
+                 </div>
+                 <div class="col-lg-4 col-sm-6">
+                    <div class="breadcrumb-img wow fadeInRight">
+                       <img src="assets/img/ban-4.png" alt="img">
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </section>
+        <!-- Breadcrumb End -->
+        
+        <!-- 以下是原有内容保持不变 -->
+        <!-- Contact Start -->
+        <section class="contact-area page-start">
+           <div class="container" style="max-width: 100%; padding-left: 50px; padding-right: 50px;">
+              <div class="row">
+                 <!-- 第一个框：178 -->
+                 <div class="col-12">
+                    <div class="single-contact-box text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                       <img src="assets/img/summary.svg" alt="img">
+                       <h3>网暴审判有 "季节"，年末法庭灯火通明，年初则进入休眠<br>恶意有 "来处"，既是精准报复的匕首，也是随意宣泄的流弹<br>伤害有 "形态"，文字最锋利，图片助纣为虐，视频杀伤力最强<br>平台是 "筛子"，微博、微信的痕迹易留存，短视频的证据难抓取</h3>
+                    </div>
+                 </div>
+                 
+                 <!-- 第二个框：但 -->
+                 <div class="col-12">
+                    <div class="single-contact-box text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                       <img src="assets/img/iceberg.svg" alt="img">
+                       <h3>但我们必须清醒地认识到，这 178 件只是冰山一角。还有无数个夜晚，受害者的哭声未曾浮出水面，他们的伤痛因证据消失、平台推诿或维权成本过高，永远停留在了法律门槛之外</h3>
+                    </div>
+                 </div>
+                 
+                 <!-- 第三个框：面对网暴 -->
+                 <div class="col-12">
+                    <div class="single-contact-box text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+                       <img src="assets/img/-magnifying-glass.svg" alt="img">
+                       <h3>面对网暴，我们并非无能为力。作为普通网民，按下转发、发出嘲讽前，不妨停一秒问问自己："我真的看清真相了吗？" <br>就像 "登山吊牌" 事件中的邓女士，人们急着审判的 "恶意"，实则是她支持公益的笨拙善意 —— 网络让一切加速，而善意往往藏在 "减速" 的瞬间</h3>
+                    </div>
+                 </div>
+                 
+                 <!-- 第四个框：当 -->
+                 <div class="col-12">
+                    <div class="single-contact-box text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">
+                       <img src="assets/img/conversation.svg" alt="img">
+                       <h3>当暴力潮水涌向他人时，一句 "等等，这不对劲"、一个理性的提问、一次对证据的追问，都可能成为受害者抓住的浮木。<br>我们不必做英雄，但可以选择不做洪流的一部分</h3>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </section>
+        <!-- Contact End -->
+        
+        <!-- 图片展示区域 -->
+        <section class="image-display-area">
+            <div class="container" style="max-width: 100%; padding-left: 50px; padding-right: 50px;">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="section-image wow fadeInUp">
+                            <img src="assets/img/image.jpg" alt="网络暴力防治" class="main-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 178起判决描述部分 - 更醒目的版本 -->
+        <section class="contact-area page-start">
+            <div class="container" style="max-width: 100%; padding-left: 50px; padding-right: 50px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="consultation-box wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="site-heading text-center">
+                                <div class="quote-box" style="padding: 25px 20px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); border-top: 6px solid #162542; position: relative;">
+                                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #162542; color: white; padding: 6px 20px; border-radius: 18px; font-weight: bold; font-size: 0.9rem;">
+                                        我们发现
+                                    </div>
+                                    <p style="font-size: 1.2rem; line-height: 1.6; font-weight: 600; color: #2c3e50; margin-top: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.05);">
+                                        178 起判决，与其说是法律的胜利，不如说是幸存者的证词。它们记录着伤害如何发生、如何被回应，更提醒着我们：对抗网暴，需要法律的刚性约束，更需要每个网民的理性与共情 —— 用不沉默点亮微光，才能让网络空间少一些戾气，多一些温度
+                                    </p>
+                                    <div style="margin-top: 20px; font-size: 1rem; color: #7f8c8d; font-style: italic; border-top: 1px solid #ddd; padding-top: 12px;">
+                                        "正义不仅要实现，而且必须以人们看得见的方式实现。" —— 爱默生
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 问题标题部分 - 超紧凑版 -->
+        <section class="contact-area page-start">
+            <div class="container" style="max-width: 100%; padding-left: 50px; padding-right: 50px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="consultation-box wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="site-heading text-center" style="padding: 5px 0; margin-bottom: 0;">
+                                <h2 class="heading" style="font-size: 1.5rem; line-height: 1.2; margin: 0; color: #2c3e50; font-weight: 700; text-transform: none; letter-spacing: 0.3px;">
+                                    面对着数不胜数的网络暴力，我们可以怎么做？
+                                </h2>
+                                <div style="height: 2px; width: 60px; background: #162542; margin: 5px auto 0;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 五个措施部分 -->
+        <section class="contact-area page-start">
+            <div class="container" style="max-width: 100%; padding-left: 50px; padding-right: 50px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="consultation-box wow fadeInUp" data-wow-delay="0.6s" style="padding-top: 0;">
+                            <div class="static-contact-info text-center" style="padding-top: 0; margin-top: 0; text-align: left; color: #333333; padding-left: 15px; padding-right: 15px;">
+                                <p style="margin-bottom: 8px; font-size: 16px; line-height: 1.4; font-weight: 500;"><strong style="font-weight: 700; color: #162542;">国家方面：</strong>建立全国统一的网络暴力举报平台，实现多部门联动快速响应机制</p>
+                                
+                                <p style="margin-bottom: 8px; font-size: 16px; line-height: 1.4; font-weight: 500;"><strong style="font-weight: 700; color: #162542;">法律方面：</strong>推动制定专门的反网络暴力法律，明确施暴者责任和处罚标准</p>
+                                <p style="margin-bottom: 8px; font-size: 16px; line-height: 1.4; font-weight: 500;"><strong style="font-weight: 700; color: #162542;">家庭方面：</strong>加强家庭教育，引导青少年树立正确的网络价值观和同理心</p>
+                                <p style="margin-bottom: 8px; font-size: 16px; line-height: 1.4; font-weight: 500;"><strong style="font-weight: 700; color: #162542;">个人方面：</strong>提高网络媒介素养，学会辨别信息真伪，不参与不助长网络暴力行为</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Subscribe Area Start -->
+        <section class="subscribe-area contact-subscribe-area py-0">
+            <div class="container" style="max-width: 100%; padding-left: 50px; padding-right: 50px;">
+                <div class="subscribe-box wow fadeInUp">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="site-heading">
+                                <p class="title">温馨提示</p>
+                                <h2 class="heading">若不幸成为网暴目标，请记住 "保存" 的力量。截图、录屏、存下链接，那些曾伤害你的字符与图像，终会成为指向施暴者的关键证据</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="static-info-box" style="color: #333;">
+                                <!-- 修改这里：将紧急联系方式标题加粗强调 -->
+                                <h3 style="color: #162542; font-size: 1.4rem; font-weight: 800; margin-top: 20px; margin-bottom: 5px;">紧急联系方式</h3>
+                                <div class="emergency-contact">
+                                    <div class="emergency-item">
+                                        <span class="emergency-icon"></span>
+                                        <div class="emergency-content">
+                                            <h4 style="color: #162542; font-weight: 700;">报警电话 110</h4>
+                                            <p style="color: #333;">遇到网络暴力威胁人身安全时，请立即报警</p>
+                                        </div>
+                                    </div>
+                                    <div class="emergency-item">
+                                        <span class="emergency-icon"></span>
+                                        <div class="emergency-content">
+                                            <h4 style="color: #162542; font-weight: 700;">法律咨询 12348</h4>
+                                            <p style="color: #333;">法律援助热线，获取专业法律建议</p>
+                                        </div>
+                                    </div>
+                                    <div class="emergency-item">
+                                        <span class="emergency-icon"></span>
+                                        <div class="emergency-content">
+                                            <h4 style="color: #162542; font-weight: 700;">心理咨询 12355</h4>
+                                            <p style="color: #333;">青少年服务台，提供心理支持</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="safety-tips">
+                                    <h4 style="color: #162542; font-weight: 700; font-size: 1.2rem; margin-bottom: 10px;">安全提醒：</h4>
+                                    <ul>
+                                        <li style="color: #333;">不要与施暴者直接争吵或对抗</li>
+                                        <li style="color: #333;">保存所有证据，包括截图、链接、聊天记录等</li>
+                                        <li style="color: #333;">向平台举报相关内容和账号</li>
+                                        <li style="color: #333;">寻求家人、朋友或专业人士的支持</li>
+                                        <li style="color: #333;">必要时向公安机关报案</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Subscribe Area End -->
+        
+     </div>
+     
+     <!-- jquery include -->
+     <script src="assets/js/jquery.min.js"></script>
+     <script src="assets/js/bootstrap.bundle.min.js"></script>
+     <script src="assets/js/owl.carousel.min.js"></script>
+     <script src="assets/js/jquery.magnific-popup.min.js"></script>
+     <script src="assets/js/jquery.counterup.min.js"></script>
+     <script src="assets/js/jquery.waypoints.js"></script>
+     <script src="assets/js/wow.min.js"></script>
+     <script src="assets/js/custom-menu.js"></script>
+     <script src="assets/js/main.js"></script>
+     
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+           const title = document.querySelector('.breadcrumb-heading h1');
+           if (title && window.innerWidth > 768) {
+              title.style.whiteSpace = 'nowrap';
+              title.style.overflow = 'hidden';
+              title.style.textOverflow = 'ellipsis';
+           }
+           
+           window.addEventListener('resize', function() {
+              if (title && window.innerWidth > 768) {
+                 title.style.whiteSpace = 'nowrap';
+                 title.style.overflow = 'hidden';
+                 title.style.textOverflow = 'ellipsis';
+              } else if (title) {
+                 title.style.whiteSpace = 'normal';
+                 title.style.overflow = 'visible';
+                 title.style.textOverflow = 'clip';
+              }
+           });
+        });
+     </script>
+   </body>
+</html>
